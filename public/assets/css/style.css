@@ -1,0 +1,42 @@
+.marquee-wrapper {
+      background-color: #f5deb3;
+      /* yellowish/skin-like */
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      /* Increased height */
+      display: flex;
+      align-items: center;
+    }
+
+    .image-nuth {
+      height: 650px;
+      width: 100%;
+      object-fit: cover;
+
+    }
+
+    .marquee-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      padding-right: 3rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #5c3a1a;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  
