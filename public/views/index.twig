@@ -1,7 +1,7 @@
 {% extends "template.twig" %}
 {% block body %}
 
-  <div class="bg-warning p-2 text-dark bg-opacity-50">Aye aye humari gade ke pass ayeeye</div>
+  <div class="bg-warning p-2 text-dark bg-opacity-50">Get the best organic Dryfruits at a n affordable cost !</div>
 
 
   </div>
@@ -183,7 +183,11 @@
                   <img src="/assets/img/{{product.image}}" class="card-img-top" alt="Cashews"
                     style="height: 200px; object-fit: cover;">
                   <div class="card-body">
+                    <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
                     <a style="color:black; text-decoration:none;" href="product/{{product.id}}"><h5 class="card-title">{{product.name}}</h5> </a>
+                    <h4>₹{{product.price}}</h4>
+                    <a href="product/{{product.id}}"><button><h5>Shop now</h5></button></a>
+                    
                   </div>
                 </div>
               </div>
@@ -206,9 +210,12 @@
           <img src="/assets/img/{{ product.image }}" class="card-img-top" alt="{{ product.name }}"
             style="height: 200px; object-fit: cover;">
           <div class="card-body">
+            <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
             <a style="color:black; text-decoration:none;" href="product/{{ product.id }}">
               <h5 class="card-title">{{ product.name }}</h5>
             </a>
+            <h4>₹{{product.price}}</h4>
+            <a href="product/{{product.id}}"><button><h5>Shop now</h5></button></a>
           </div>
         </div>
       </section>
@@ -238,41 +245,7 @@
 
           {% endif %} #}
 
-          <div class="col-6 col-md-3">
-            <div class="card h-100 text-center border-secondary">
-              <img src="/assets/img/walnut.webp" class="card-img-top" alt="Walnuts"
-                style="height: 200px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">Premium Walnuts</h5>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-6 col-md-3">
-            <div class="card h-100 text-center border-success">
-              <img src="/assets/img/pistachio.webp" class="card-img-top" alt="Walnuts"
-                style="height: 200px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">Premium Walnuts</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-3">
-            <div class="card h-100 text-center border-danger">
-              <img src="/assets/img/pecan.webp" class="card-img-top" alt="Walnuts"
-                style="height: 200px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">Premium Walnuts</h5>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
+         
 
 
     </div>
