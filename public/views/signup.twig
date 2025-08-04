@@ -20,28 +20,30 @@
     </div>
 
 
-    <form>
+ <form action="/signup" method="POST">
   <div class="form-group my-2">
-    <!-- <label for="exampleInputEmail1">Email address</label> -->
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-  </div>
-  <div class="form-group">
-    <!-- <label for="exampleInputPassword1">Password</label> -->
-    <input type="text" class="form-control my-3" id="exampleInputPassword1" placeholder="Last Name">
-  </div>
-  <div class="form-group">
-    <!-- <label for="exampleInputPassword1">Password</label> -->
-    <input type="email" class="form-control my-3" id="exampleInputPassword1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <!-- <label for="exampleInputPassword1">Password</label> -->
-    <input type="password" class="form-control my-3" id="exampleInputPassword1" placeholder="Password">
+    <input type="text" class="form-control" name="name" placeholder="First Name">
   </div>
   
+  <div class="form-group">
+    <input type="email" name="email" class="form-control my-3" placeholder="Email">
+  </div>
+  
+  <div class="form-group">
+    <input type="password" name="password" class="form-control my-3" placeholder="Password">
+  </div>
+  
+  <div class="form-group">
+    <input type="password" name="confirm" class="form-control my-3" placeholder="Confirm Password">
+  </div>
+  
+  <button type="submit" class="d-flex justify-content-center container btn btn-success">Submit</button>
 
-  <button type="submit" class=" d-flex justify-content-center container btn btn-success">Submit</button>
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
 </form>
+
 
 
 
