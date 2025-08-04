@@ -10,129 +10,264 @@
   <link rel="stylesheet" href="../assets/css/style.css">
 
   <style>
-    *{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-body{
-    display: flex;
-    flex-direction: column;
-}
-header{
- background-color: rgb(255, 255, 255);
- display: flex;
- justify-content: space-between;
- height: 120px;
- padding-top: 10px;
- padding-left: 10px;
- border-bottom: 2px solid rgb(96, 26, 26);
-}
-.search-box input {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 0 0 0 7px;
-  outline: none;
-  background-color: rgb(255, 255, 255);
-  border-bottom: 2px solid rgb(0, 0, 0);
-}
-.search-box button{
-    border: none;
-    background-color:rgb(255, 255, 255);
-    outline: none;
-     border-bottom: 2px solid rgb(0, 0, 0);
-}
-.search-box button:hover{
-    color: rgb(205, 68, 68); 
-}
-ul{
-    list-style-type: none;
-    margin-left:10px;
-}
-.telephone{
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-}
-.img-container{
-  padding-left: 80px;
-  padding-top: 40px;
-  display:flex;
-  flex-direction: column;
-}
-h1{
-font-size: 30px;
-font-weight: bold;
-width: 600px;
-}
-p{
-    font-size: 18px;
-    margin-bottom: 20px;
-    margin-top: 8px;
-}
-.text-container{
-    display:flex;
-    flex-direction: column;
-    width: 500px;
-    margin-right: 100px;
-    margin-top: 40px;
-    
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-}
-.big-container{
-    display: flex;
-    justify-content: space-around;
-}
-.clinicians-choice {
-  margin-top: 30px;
-  font-size: 15px;
-}
-.clinicians-choice p:first-child {
-  font-weight: bold;
-}
-.cli-cho{
-    text-size-adjust: 10px;
-}
-.small-box{
-    margin-left: -25px;
-    display: flex;
-    justify-content: space-between;
-    height: 150px;
-    width:450px;
-    margin-top: 30px;
+    body {
+      display: flex;
+      flex-direction: column;
+    }
 
-}
-.cont1{
-    border: 1px solid rgb(219, 189, 189);
-    height: 90%;
-    width: 100px;
-    width:30%;
-    border-radius: 19px;
-}
-.cont2{
-    border: 1px solid rgb(219, 189, 189);
-     height: 90%;
-     width:60px;
-    width: 30%;
-    border-radius: 19px;
-}
-.cont3{
-    border: 1px solid rgb(219, 189, 189);
-     height: 90%;
-    width: 30%;
-    border-radius: 19px;
-}
-.flavors-container1{
-    border: 1px solid rebeccapurple;
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-}
-.flavors-container2{
-    border: 1px solid rebeccapurple;
-    height: 90px;
-}
+    header {
+      background-color: rgb(255, 255, 255);
+      display: flex;
+      justify-content: space-between;
+      height: 120px;
+      padding-top: 10px;
+      padding-left: 10px;
+      border-bottom: 2px solid rgb(96, 26, 26);
+    }
+
+    .search-box input {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 0 0 0 7px;
+      outline: none;
+      background-color: rgb(255, 255, 255);
+      border-bottom: 2px solid rgb(0, 0, 0);
+    }
+
+    .search-box button {
+      border: none;
+      background-color: rgb(255, 255, 255);
+      outline: none;
+      border-bottom: 2px solid rgb(0, 0, 0);
+    }
+
+    .search-box button:hover {
+      color: rgb(205, 68, 68);
+    }
+
+    ul {
+      list-style-type: none;
+      margin-left: 10px;
+    }
+
+    .telephone {
+      width: 200px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .img-container {
+      padding-left: 80px;
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      width: 600px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      margin-top: 8px;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      margin-right: 100px;
+      margin-top: 40px;
+
+
+    }
+
+    .big-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .clinicians-choice {
+      margin-top: 30px;
+      font-size: 15px;
+    }
+
+    .clinicians-choice p:first-child {
+      font-weight: bold;
+    }
+
+    .cli-cho {
+      text-size-adjust: 10px;
+    }
+
+    .small-box {
+      margin-left: -25px;
+      display: flex;
+      justify-content: space-between;
+      height: 150px;
+      width: 450px;
+      margin-top: 30px;
+
+    }
+
+    .cont1 {
+      border: 1px solid rgb(219, 189, 189);
+      height: 90%;
+      width: 100px;
+      width: 30%;
+      border-radius: 19px;
+    }
+
+    .cont2 {
+      border: 1px solid rgb(219, 189, 189);
+      height: 90%;
+      width: 60px;
+      width: 30%;
+      border-radius: 19px;
+    }
+
+    .cont3 {
+      border: 1px solid rgb(219, 189, 189);
+      height: 90%;
+      width: 30%;
+      border-radius: 19px;
+    }
+
+    .quantity-box {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 40px;
+
+    }
+
+    .box1 {
+      border: 1px solid rebeccapurple;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-radius: 7px;
+    }
+
+    .add-to-cart-box {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 7px;
+    }
+
+    .adding-box {
+      width: 30%;
+      height: 70%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .adding-box span.num {
+      border-left: 1px solid rebeccapurple;
+      border-right: 1px solid rebeccapurple;
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    .adding-box span.add {
+      font-size: 35px;
+    }
+
+    .adding-box span.sub {
+      font-size: 35px;
+    }
+
+    .add-to-cart {
+      width: 70%;
+      height: 100px;
+      margin-right: -35px;
+
+    }
+
+    .add-to-cart button {
+      width: 90%;
+      height: 100%;
+      background-color: #00ba74;
+      border-radius: 20px;
+      color: white;
+      border: none;
+    }
+
+    .add-to-cart button:hover {
+      cursor: pointer;
+      background-color: #06a468d8;
+    }
+
+    .text-list {
+      height: 200px;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: px;
+    }
+
+    .big-container2 {
+      height: 1450px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .first-container {
+      height: 33.33%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .second-container {
+      height: 33.33%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .third-container {
+      height: 33.33%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .first-cont {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .second-cont {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .third-cont {
+      display: flex;
+      flex-direction: column;
+    }
+    .press-rivw{
+      border: 1px solid rebeccapurple;
+      height:1100px;
+    }
   </style>
 
 
@@ -150,17 +285,16 @@ p{
     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
       <ul class="navbar-nav">
         <li class="nav-item position-relative">
-      <a class="nav-link d-flex flex-column align-items-center" id="search-button" href="javascript:void(0);">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        <span>Search</span>
-      </a>
+          <a class="nav-link d-flex flex-column align-items-center" id="search-button" href="javascript:void(0);">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span>Search</span>
+          </a>
 
-    
-      <input type="text" id="search-input"  
-             class="form-control position-absolute mt-1"
-             style="top: 100%; right: 0; width: 200px; display: none; transition: all 0.3s ease; z-index: 1050;"
-             placeholder="Search...">
-    </li>
+
+          <input type="text" id="search-input" class="form-control position-absolute mt-1"
+            style="top: 100%; right: 0; width: 200px; display: none; transition: all 0.3s ease; z-index: 1050;"
+            placeholder="Search...">
+        </li>
         <li class="nav-item">
           <a class="nav-link d-flex flex-column align-items-center" href="/home">
             <i class="fas fa-home"></i>
@@ -221,42 +355,123 @@ p{
     </div>
   </div>
 
-{% if product is not empty %}
-
-<div class="big-container">
+  {% if product is not empty %}
+  <div class="big-container">
     <div class="img-container">
 
-        <img src="../assets/img/{{product.image}}" style="width:500px;padding-right: 100px;height: 400px;">
-        
+      <img src="../assets/img/{{product.image}}" style="width:500px;padding-right: 100px;height: 550px;">
+      <div class="small-box">
+        <div class="cont1">
+          <img src="image/WhatsApp Image 2025-07-29 at 22.43.02_9a275e8f.jpg"
+            style="width: 70%; height: 100%;border-radius: 19px;margin-left:20px">
+        </div>
+        <div class="cont2">
+          <img src="image/WhatsApp Image 2025-07-30 at 09.01.11_ea4b1a73.jpg"
+            style="width: 70%; height: 100%;border-radius: 19px;margin-left:20px">
+        </div>
+        <div class="cont3">
+          <img src="image/PK_Collagen-Peptides_20serv-Vanilla-SFP_2024-07-08_30777c53-35bb-4478-812f-c9195f374b5e.webp"
+            style="width: 100%; height: 100%;border-radius: 19px;">
+        </div>
+      </div>
     </div>
     <div class="text-container">
 
-        <div class="heading1">
-            <h1>{{product.name}}</h1>
-        </div>
+      <div class="heading1">
+        <h1>{{product.name}}</h1>
+      </div>
 
-        <div class="para1">
-            <p>
-                {{product.description}}
-            </p>
+      <div class="para1">
+        <p>{{product.description|nl2br}}</p>
+      </div>
+      <div class="clinicians-choice">
+        <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
+      </div>
+      <p style="font-size: 15px;">Quantity</p>
+      <div class="quantity-box">
+        <div class="box1">
+          <h4>One time</h4>
+          <h5>$44.55</h5>
         </div>
-        <div class="clinicians-choice">
-            <p>{{product.info}} </p>
-            <p><strong>{{product.brand}}</strong> {{product.flavour}}</p>
-            <br>
-            <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
+        <div class="add-to-cart-box">
+          <div class="adding-box">
+            <span class="sub">-</span>
+            <span class="num">01</span>
+            <span class="add">+</span>
+          </div>
+          <div class="add-to-cart">
+            <button>
+              <h2>Add to cart</h2>
+            </button>
+          </div>
         </div>
-        
-            
-        </div>
+      </div>
+      <div class="text-list">
+        <ul>
+          <li>
+            <i class="fa-regular fa-circle-check"></i><strong>Made to:</strong>
+            <em>Support brain health, improve memory, enhance focus,
+              promote heart wellness, and reduce inflammation.</em>
+          </li>
+          <br>
+          <li>
+            <i class="fa-regular fa-circle-check"></i><em>Naturally rich in Omega-3 fatty acids and
+              antioxidants</em>
+          </li>
+          <br>
+          <li>
+            <i class="fa-regular fa-circle-check"></i><em>High in plant-based protein and fiber</em>
+          </li>
+          <br>
+          <li>
+            <i class="fa-regular fa-circle-check"></i><em>Gluten-free and vegan-friendly</em>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
-</div>
-{% else %}
-    <p>No products found.</p>
+  </div>
+  <div class="big-container2">
+    <div class="first-container">
+      <img src="../assets/img/jenn-kosar-FhXZSP-4ARg-unsplash.jpg" style="width:90%;">
+      <div class="first-cont">
+        <strong style="font-size:33px;padding-left:20px;padding-right:
+      20px;padding-top:20px;margin-top:100px;">Nourish Naturally</strong>
+        <em style="font-size: 21px;padding:20px;">Every handful of nuts delivers
+          vitamins and antioxidants that help reduce inflammation, support heart
+          health, and boost your body's natural defenses.</em>
+      </div>
+    </div>
+    <div class="second-container">
+      <div class="first-cont">
+        <strong style="font-size:33px;padding-left:20px;padding-right:
+      20px;padding-top:20px;margin-top:100px;">Feel Full, Feel Fantastic</strong>
+        <em style="font-size: 21px;padding:20px;">Nuts are a smart snack that curbs
+          cravings and supports weight management. Their rich fiber and good fats
+          help you stay full without feeling heavy.</em>
+      </div>
+      <img src="../assets/img/akahrot.jpg" style="width:96%;">
+    </div>
+    <div class="third-container">
+      <img src="../assets/img/badam.jpg" style="width:93%;">
+      <div class="first-cont">
+        <strong style="font-size:33px;padding-left:20px;padding-right:
+      20px;padding-top:20px;margin-top:100px;">Wholesome Crunch for a Healthy Life</strong>
+        <em style="font-size: 21px;padding:20px;">From improving cholesterol to supporting bone
+          strength, nuts are nature's multitaskers. Add them to your diet for a simple step
+          toward long-term wellness.</em>
+      </div>
+    </div>
+    <div class="press-rivw">
+      <h1>Press reviews</h1>
+    </div>
+  </div>
+  </div>
+  </div>
+  {% else %}
+  <p>No products found.</p>
 
 
-{% endif %}
+  {% endif %}
 
 
 
