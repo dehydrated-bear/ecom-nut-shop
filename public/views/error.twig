@@ -1,0 +1,13 @@
+{# /Users/harshit/Desktop/php-backend/public/views/error.twig #}
+{% extends "template.twig" %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">An Error Occurred!</h4>
+            <p>{{ error }}</p>
+            <hr>
+            <p class="mb-0">Please try again, or <a href="/home">return to the homepage</a>.</p>
+        </div>
+    </div>
+{% endblock %}

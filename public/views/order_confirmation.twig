@@ -1,0 +1,10 @@
+{# views/order_confirmation.twig #}
+{% extends "template.twig" %}
+
+{% block body %}
+<div class="container my-5 text-center">
+    <h1 class="mb-4">Order Confirmed!</h1>
+    <p class="lead">Thank you for your purchase. Your order #{{ order_id }} has been successfully placed.</p>
+    <a href="/home" class="btn btn-primary mt-3">Continue Shopping</a>
+</div>
+{% endblock %}

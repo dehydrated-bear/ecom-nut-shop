@@ -195,6 +195,40 @@
             {% endfor %}
 
 
+<h2 class="px-4 mt-5">Filter by Tag</h2>
+
+<div class="container py-5">
+  <div class="row g-4 px-4">
+
+    {% set colors = ['primary', 'success', 'warning', 'danger', 'info', 'secondary'] %}
+    {% set i = 0 %}
+
+    <!-- "All" Tag Card -->
+    
+
+    <!-- Loop Tags -->
+    {% for tag, img in tags %}
+  <section class="col-6 col-md-3">
+    <div class="card h-100 text-center border-{{ colors[i % colors|length] }}">
+      <img src="/assets/img/{{ img }}" class="card-img-top" alt="{{ tag }}"
+        style="height: 200px; object-fit: cover;">
+      <div class="card-body">
+        {% if tag == selected_tag %}
+          <strong>{{ tag|capitalize }}</strong>
+        {% else %}
+          <a href="/tag/{{ tag }}" style="color:black; text-decoration:none;">
+            <h5 class="card-title">{{ tag|capitalize }}</h5>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% set i = i + 1 %}
+{% endfor %}
+  </div>
+</div>
+
+
 
             <h2 class="px-4 mt-5">Popular Picks</h2>
 

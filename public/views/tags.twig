@@ -1,0 +1,35 @@
+{% extends "template.twig" %}
+{% block body %}
+
+<h2 class="px-4 mt-5">Products tagged with "{{ tag|capitalize }}"</h2>
+
+<div class="container py-5">
+  <div class="row g-4 px-4">
+    {% if products %}
+      {% set colors = ['primary', 'success', 'warning', 'danger', 'info', 'secondary'] %}
+      {% set i = 0 %}
+      {% for product in products %}
+        <section class="col-6 col-md-3">
+          <div class="card h-100 text-center border-{{ colors[i % colors|length] }}">
+            <img src="/assets/img/{{ product.image }}" class="card-img-top" alt="{{ product.name }}"
+                 style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
+              <a style="color:black; text-decoration:none;" href="/product/{{ product.id }}">
+                <h5 class="card-title">{{ product.name }}</h5>
+              </a>
+              <h4>₹{{ product.price }}</h4>
+              <a href="/product/{{ product.id }}"><button><h5>Shop now</h5></button></a>
+            </div>
+          </div>
+        </section>
+        {% set i = i + 1 %}
+      {% endfor %}
+    {% else %}
+      <p>No products found for this tag.</p>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

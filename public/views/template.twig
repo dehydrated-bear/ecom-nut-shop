@@ -11,6 +11,8 @@
 
   
 
+  
+
 
 </head>
 
@@ -45,7 +47,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link d-flex flex-column align-items-center" id="nav-button" href="javascript:void(0)">
+          <a class="nav-link d-flex flex-column align-items-center" id="nav-button" href="/cart">
             <i class="fas fa-shopping-cart"></i>
             <span>Cart</span>
           </a>
@@ -76,41 +78,7 @@
   </nav>
 
 
-  <div class="d-flex position-fixed z-2 flex-column align-items-stretch flex-shrink-0 bg-white" id="navbarCart"
-    style="width: 0px; height:100%; border:solid 2px black; right: 0;">
-    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-      <svg class="bi me-2" width="30" height="24">
-        <use xlink:href="#bootstrap" />
-      </svg>
-      <span class="fs-5 fw-semibold">Your Cart</span>
-    </a>
-    <div class="list-group list-group-flush border-bottom scrollarea">
-      <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small>Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      {# <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-muted">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      #}
-
-
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">Your Cart Is Empty</strong>
-          <small class="text-muted">Shop now</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-    </div>
-  </div>
+ 
 
 
 
@@ -250,6 +218,162 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/dynamic.js"></script>
+  <script>
+document.getElementById('nav-button').addEventListener('click', function() {
+  const cart = document.getElementById('navbarCart');
+  cart.style.width = cart.style.width === '400px' ? '0px' : '400px';
+  if (cart.style.width === '400px') {
+    fetch('/cart-items')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('cartItemsList');
+        list.innerHTML = '';
+        if (data.items.length === 0) {
+          list.innerHTML = `<a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1">Your Cart Is Empty</strong>
+              <small class="text-muted">Shop now</small>
+            </div>
+          </a>`;
+        } else {
+          data.items.forEach(item => {
+            list.innerHTML += `
+              <a href="/product/${item.id}" class="list-group-item list-group-item-action py-3 lh-tight">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                  <img src="/assets/img/${item.image}" style="width:40px;height:40px;object-fit:cover;border-radius:5px;">
+                  <strong class="mb-1 ms-2">${item.name}</strong>
+                  <span>₹${item.price} × ${item.quantity}</span>
+                </div>
+              </a>
+            `;
+          });
+        }
+      });
+  }
+});
+document.getElementById("nav-button").addEventListener("click", function () {
+    const cartSidebar = document.getElementById("navbarCart");
+
+    // Toggle sidebar open/close
+    cartSidebar.style.width = cartSidebar.style.width === "300px" ? "0px" : "300px";
+
+    // Fetch cart items
+    fetch('/cart-items')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById("cartItemsList");
+            list.innerHTML = ""; // clear old items
+
+            if (!data.success || data.items.length === 0) {
+                list.innerHTML = `
+                    <a class="list-group-item list-group-item-action py-3 lh-tight">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <strong>Your Cart Is Empty</strong>
+                            <small class="text-muted">Shop now</small>
+                        </div>
+                    </a>`;
+                return;
+            }
+
+            data.items.forEach(item => {
+                const li = document.createElement("a");
+                li.className = "list-group-item list-group-item-action py-3 lh-tight";
+                li.innerHTML = `
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">${item.name}</strong>
+                        <small class="text-muted">${item.quantity} × $${item.price}</small>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        })
+        .catch(err => {
+            console.error("Error loading cart:", err);
+        });
+});
+
+
+  
+
+
+document.getElementById("addToCartBtn").addEventListener("click", function (e) {
+    e.preventDefault(); // Stop form reload
+
+    const productId = this.getAttribute("data-product-id");
+    const quantityText = document.querySelector(".adding-box .num").innerText.trim();
+    const quantity = parseInt(quantityText, 10) || 1;
+
+    fetch('/add-to-cart', {
+    method: 'POST',
+    body: JSON.stringify({ product_id: productId, quantity: quantity }),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+    .then(async response => {
+        // Try parsing JSON, handle non-JSON gracefully
+        try {
+            const data = await response.json();
+            if (data.success) {
+                alert("Item added to cart successfully!");
+            } else {
+                alert("Error: " + (data.message || "Unknown error"));
+            }
+        } catch (err) {
+            console.error("Invalid JSON from server:", err);
+            alert("Server error: Could not process request.");
+        }
+    })
+    .catch(err => {
+        console.error("Fetch error:", err);
+        alert("Could not connect to server.");
+    });
+});
+
+document.getElementById("nav-button").addEventListener("click", function () {
+    const cartSidebar = document.getElementById("navbarCart");
+
+    // Toggle sidebar open/close
+    cartSidebar.style.width = cartSidebar.style.width === "300px" ? "0px" : "300px";
+
+    // Fetch cart items
+    fetch('/cart-items')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById("cartItemsList");
+            list.innerHTML = ""; // clear old items
+
+            if (!data.success || data.items.length === 0) {
+                list.innerHTML = `
+                    <a class="list-group-item list-group-item-action py-3 lh-tight">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <strong>Your Cart Is Empty</strong>
+                            <small class="text-muted">Shop now</small>
+                        </div>
+                    </a>`;
+                return;
+            }
+
+            data.items.forEach(item => {
+                const li = document.createElement("a");
+                li.className = "list-group-item list-group-item-action py-3 lh-tight";
+                li.innerHTML = `
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">${item.name}</strong>
+                        <small class="text-muted">${item.quantity} × $${item.price}</small>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        })
+        .catch(err => {
+            console.error("Error loading cart:", err);
+        });
+});
+
+
+
+</script>
 </body>
 
 </html>

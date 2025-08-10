@@ -1,0 +1,52 @@
+{# views/cart.twig #}
+{% extends "template.twig" %}
+
+{% block body %}
+<div class="container my-5">
+    <h1>Your Shopping Cart</h1>
+    {% if items is empty %}
+        <div class="alert alert-info" role="alert">
+            Your cart is empty. <a href="/home">Start shopping now!</a>
+        </div>
+    {% else %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set total_cart_price = 0 %}
+                {% for item in items %}
+                    {% set total_item_price = item.price * item.quantity %}
+                    {% set total_cart_price = total_cart_price + total_item_price %}
+                    <tr>
+                        <td>
+                            <img src="/assets/img/{{ item.image }}" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td>₹{{ item.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>₹{{ total_item_price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                    <td><strong>₹{{ total_cart_price }}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-end">
+            <form action="/checkout" method="post">
+                <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

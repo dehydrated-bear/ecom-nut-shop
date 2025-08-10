@@ -48,3 +48,211 @@
       height: 28%;
     }
   
+  
+  
+  
+  .product-page .header {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 2px solid rgb(96, 26, 26);
+  }
+
+  .product-page .search-box input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 0 0 0 7px;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
+
+  .product-page .search-box button {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
+
+  .product-page .search-box button:hover {
+    color: rgb(205, 68, 68);
+  }
+
+  .product-page ul {
+    list-style-type: none;
+    margin-left: 10px;
+  }
+
+  .product-page .telephone {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .product-page .img-container {
+    padding-left: 80px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-page h1 {
+    font-size: 30px;
+    font-weight: bold;
+    width: 600px;
+  }
+
+  .product-page p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 8px;
+  }
+
+  .product-page .text-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-right: 100px;
+    margin-top: 40px;
+  }
+
+  .product-page .big-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .product-page .clinicians-choice {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  .product-page .clinicians-choice p:first-child {
+    font-weight: bold;
+  }
+
+  .product-page .cli-cho {
+    text-size-adjust: 10px;
+  }
+
+  .product-page .small-box {
+    margin-left: -25px;
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    width: 450px;
+    margin-top: 30px;
+  }
+
+  .product-page .cont1,
+  .product-page .cont2,
+  .product-page .cont3 {
+    border: 1px solid rgb(219, 189, 189);
+    height: 90%;
+    width: 30%;
+    border-radius: 19px;
+  }
+
+  .product-page .quantity-box {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 40px;
+  }
+
+  .product-page .box1 {
+    border: 1px solid rebeccapurple;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 7px;
+  }
+
+  .product-page .add-to-cart-box {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 7px;
+  }
+
+  .product-page .adding-box {
+    width: 30%;
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .product-page .adding-box span.num {
+    border-left: 1px solid rebeccapurple;
+    border-right: 1px solid rebeccapurple;
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .product-page .adding-box span.add,
+  .product-page .adding-box span.sub {
+    font-size: 35px;
+  }
+
+  .product-page .add-to-cart {
+    width: 70%;
+    height: 100px;
+    margin-right: -35px;
+  }
+
+  .product-page .add-to-cart button {
+    width: 90%;
+    height: 100%;
+    background-color: #00ba74;
+    border-radius: 20px;
+    color: white;
+    border: none;
+  }
+
+  .product-page .add-to-cart button:hover {
+    cursor: pointer;
+    background-color: #06a468d8;
+  }
+
+  .product-page .text-list {
+    height: 200px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: px;
+  }
+
+  .product-page .big-container2 {
+    height: 1450px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-page .first-container,
+  .product-page .second-container,
+  .product-page .third-container {
+    height: 33.33%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .product-page .first-cont,
+  .product-page .second-cont,
+  .product-page .third-cont {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-page .press-rivw {
+    border: 1px solid rebeccapurple;
+    height: 1100px;
+  }

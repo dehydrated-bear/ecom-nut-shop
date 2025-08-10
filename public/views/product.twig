@@ -1,613 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "template.twig" %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nut Shop</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css">
+{% block body %}
+    <style>
+        /* These styles are only for the product page, using a unique prefix to avoid conflicts */
+        .product-page h1 {
+            font-size: 30px;
+            font-weight: bold;
+            width: 600px;
+        }
 
-  <style>
-    * {
-      margin: 0%;
-      padding: 0%;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
+        .product-page p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            margin-top: 8px;
+        }
 
-    body {
-      display: flex;
-      flex-direction: column;
-    }
+        .product-page .img-container {
+            padding-left: 80px;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    header {
-      background-color: rgb(255, 255, 255);
-      display: flex;
-      justify-content: space-between;
-      height: 120px;
-      padding-top: 10px;
-      padding-left: 10px;
-      border-bottom: 2px solid rgb(96, 26, 26);
-    }
+        .product-page .text-container {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            margin-right: 100px;
+            margin-top: 40px;
+        }
 
-    .search-box input {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 0 0 0 7px;
-      outline: none;
-      background-color: rgb(255, 255, 255);
-      border-bottom: 2px solid rgb(0, 0, 0);
-    }
+        .product-page .big-container {
+            display: flex;
+            justify-content: space-around;
+        }
 
-    .search-box button {
-      border: none;
-      background-color: rgb(255, 255, 255);
-      outline: none;
-      border-bottom: 2px solid rgb(0, 0, 0);
-    }
+        .product-page .clinicians-choice {
+            margin-top: 30px;
+            font-size: 15px;
+        }
 
-    .search-box button:hover {
-      color: rgb(205, 68, 68);
-    }
+        .product-page .clinicians-choice p:first-child {
+            font-weight: bold;
+        }
 
-    ul {
-      list-style-type: none;
-      margin-left: 10px;
-    }
+        .product-page .small-box {
+            margin-left: -25px;
+            display: flex;
+            justify-content: space-between;
+            height: 150px;
+            width: 450px;
+            margin-top: 30px;
+        }
 
-    .telephone {
-      width: 200px;
-      display: flex;
-      justify-content: space-between;
-    }
+        .product-page .cont1,
+        .product-page .cont2,
+        .product-page .cont3 {
+            border: 1px solid rgb(219, 189, 189);
+            height: 90%;
+            width: 30%;
+            border-radius: 19px;
+        }
 
-    .img-container {
-      padding-left: 80px;
-      padding-top: 40px;
-      display: flex;
-      flex-direction: column;
-    }
+        .product-page .quantity-box {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            gap: 40px;
+        }
 
-    h1 {
-      font-size: 30px;
-      font-weight: bold;
-      width: 600px;
-    }
+        .product-page .box1 {
+            border: 1px solid rebeccapurple;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 7px;
+        }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 20px;
-      margin-top: 8px;
-    }
+        .product-page .add-to-cart-box {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 7px;
+        }
 
-    .text-container {
-      display: flex;
-      flex-direction: column;
-      width: 500px;
-      margin-right: 100px;
-      margin-top: 40px;
+        .product-page .adding-box {
+            width: 30%;
+            height: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
 
+        .product-page .adding-box span.num {
+            border-left: 1px solid rebeccapurple;
+            border-right: 1px solid rebeccapurple;
+            padding: 10px;
+            font-size: 20px;
+        }
 
-    }
+        .product-page .adding-box span.add,
+        .product-page .adding-box span.sub {
+            font-size: 35px;
+        }
 
-    .big-container {
-      display: flex;
-      justify-content: space-around;
-    }
+        .product-page .add-to-cart {
+            width: 70%;
+            height: 100px;
+            margin-right: -35px;
+        }
 
-    .clinicians-choice {
-      margin-top: 30px;
-      font-size: 15px;
-    }
+        .product-page .add-to-cart button {
+            width: 90%;
+            height: 100%;
+            background-color: #00ba74;
+            border-radius: 20px;
+            color: white;
+            border: none;
+        }
 
-    .clinicians-choice p:first-child {
-      font-weight: bold;
-    }
+        .product-page .add-to-cart button:hover {
+            cursor: pointer;
+            background-color: #06a468d8;
+        }
 
-    .cli-cho {
-      text-size-adjust: 10px;
-    }
+        .product-page .text-list {
+            height: 200px;
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: px;
+        }
 
-    .small-box {
-      margin-left: -25px;
-      display: flex;
-      justify-content: space-between;
-      height: 150px;
-      width: 450px;
-      margin-top: 30px;
+        .product-page .big-container2 {
+            height: 1450px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    }
+        .product-page .first-container,
+        .product-page .second-container,
+        .product-page .third-container {
+            height: 33.33%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .cont1 {
-      border: 1px solid rgb(219, 189, 189);
-      height: 90%;
-      width: 100px;
-      width: 30%;
-      border-radius: 19px;
-    }
+        .product-page .first-cont,
+        .product-page .second-cont,
+        .product-page .third-cont {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .cont2 {
-      border: 1px solid rgb(219, 189, 189);
-      height: 90%;
-      width: 60px;
-      width: 30%;
-      border-radius: 19px;
-    }
+        .product-page .press-rivw {
+            border: 1px solid rebeccapurple;
+            height: 1100px;
+        }
+    </style>
 
-    .cont3 {
-      border: 1px solid rgb(219, 189, 189);
-      height: 90%;
-      width: 30%;
-      border-radius: 19px;
-    }
-
-    .quantity-box {
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      gap: 40px;
-
-    }
-
-    .box1 {
-      border: 1px solid rebeccapurple;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px;
-      border-radius: 7px;
-    }
-
-    .add-to-cart-box {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: 7px;
-    }
-
-    .adding-box {
-      width: 30%;
-      height: 70%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .adding-box span.num {
-      border-left: 1px solid rebeccapurple;
-      border-right: 1px solid rebeccapurple;
-      padding: 10px;
-      font-size: 20px;
-    }
-
-    .adding-box span.add {
-      font-size: 35px;
-    }
-
-    .adding-box span.sub {
-      font-size: 35px;
-    }
-
-    .add-to-cart {
-      width: 70%;
-      height: 100px;
-      margin-right: -35px;
-
-    }
-
-    .add-to-cart button {
-      width: 90%;
-      height: 100%;
-      background-color: #00ba74;
-      border-radius: 20px;
-      color: white;
-      border: none;
-    }
-
-    .add-to-cart button:hover {
-      cursor: pointer;
-      background-color: #06a468d8;
-    }
-
-    .text-list {
-      height: 200px;
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: px;
-    }
-
-    .big-container2 {
-      height: 1450px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .first-container {
-      height: 33.33%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .second-container {
-      height: 33.33%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .third-container {
-      height: 33.33%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .first-cont {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .second-cont {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .third-cont {
-      display: flex;
-      flex-direction: column;
-    }
-    .press-rivw{
-      border: 1px solid rebeccapurple;
-      height:1100px;
-    }
-  </style>
-
-
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 sticky-top">
-    <a class="navbar-brand" href="/home">Nut Shop</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-      <ul class="navbar-nav">
-        <li class="nav-item position-relative">
-          <a class="nav-link d-flex flex-column align-items-center" id="search-button" href="javascript:void(0);">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <span>Search</span>
-          </a>
-
-
-          <input type="text" id="search-input" class="form-control position-absolute mt-1"
-            style="top: 100%; right: 0; width: 200px; display: none; transition: all 0.3s ease; z-index: 1050;"
-            placeholder="Search...">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column align-items-center" href="/home">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column align-items-center" id="nav-button" href="javascript:void(0)">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column align-items-center" href="/signin">
-            <i class="fas fa-user"></i>
-            <span>User</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-  <div class="d-flex position-fixed z-2 flex-column align-items-stretch flex-shrink-0 bg-white" id="navbarCart"
-    style="width: 0px; height:100%; border:solid 2px black; right: 0;">
-    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-      <svg class="bi me-2" width="30" height="24">
-        <use xlink:href="#bootstrap" />
-      </svg>
-      <span class="fs-5 fw-semibold">Your Cart</span>
-    </a>
-    <div class="list-group list-group-flush border-bottom scrollarea">
-      <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small>Wed</small>
+    {% if product is not empty %}
+        <div class="product-page">
+            <div class="big-container">
+                <div class="img-container " >
+                    <img src="../assets/img/{{product.image}}" style="width:500px;padding-right: 100px;height: 550px; ">
+                    <div class="small-box">
+                        {# <div class="cont1">
+                            <img src="image/WhatsApp Image 2025-07-29 at 22.43.02_9a275e8f.jpg"
+                                 style="width: 70%; height: 100%;border-radius: 19px;margin-left:20px">
+                        </div>
+                        <div class="cont2">
+                            <img src="image/WhatsApp Image 2025-07-30 at 09.01.11_ea4b1a73.jpg"
+                                 style="width: 70%; height: 100%;border-radius: 19px;margin-left:20px">
+                        </div>
+                        <div class="cont3">
+                            <img src="image/PK_Collagen-Peptides_20serv-Vanilla-SFP_2024-07-08_30777c53-35bb-4478-812f-c9195f374b5e.webp"
+                                 style="width: 100%; height: 100%;border-radius: 19px;">
+                        </div> #}
+                    </div>
+                </div>
+                <div class="text-container">
+                    <div class="heading1">
+                        <h1>{{product.name}}</h1>
+                    </div>
+                    <div class="para1">
+                        <p>{{product.description|nl2br}}</p>
+                    </div>
+                    <div class="clinicians-choice">
+                        <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
+                    </div>
+                    <p style="font-size: 15px;">Quantity</p>
+                    <div class="quantity-box">
+                        <div class="box1">
+                            <h4>One time</h4>
+                            <h5>$44.55</h5>
+                        </div>
+                        <div class="add-to-cart-box">
+                            <div class="adding-box">
+                                <span class="sub">-</span>
+                                <span class="num">01</span>
+                                <span class="add">+</span>
+                            </div>
+                            <div class="add-to-cart">
+                                <button id="addToCartBtn" data-product-id="{{ product.id }}">
+                                    <h2>Add to cart</h2>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-list">
+                        <ul>
+                            <li>
+                                <i class="fa-regular fa-circle-check"></i><strong>Made to:</strong>
+                                <em>Support brain health, improve memory, enhance focus,
+                                    promote heart wellness, and reduce inflammation.</em>
+                            </li>
+                            <br>
+                            <li>
+                                <i class="fa-regular fa-circle-check"></i><em>Naturally rich in Omega-3 fatty acids and
+                                    antioxidants</em>
+                            </li>
+                            <br>
+                            <li>
+                                <i class="fa-regular fa-circle-check"></i><em>High in plant-based protein and fiber</em>
+                            </li>
+                            <br>
+                            <li>
+                                <i class="fa-regular fa-circle-check"></i><em>Gluten-free and vegan-friendly</em>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="big-container2">
+                <div class="first-container">
+                    <img src="../assets/img/jenn-kosar-FhXZSP-4ARg-unsplash.jpg" style="width:90%;">
+                    <div class="first-cont">
+                        <strong style="font-size:33px;padding-left:20px;padding-right:
+                        20px;padding-top:20px;margin-top:100px;">Nourish Naturally</strong>
+                        <em style="font-size: 21px;padding:20px;">Every handful of nuts delivers
+                            vitamins and antioxidants that help reduce inflammation, support heart
+                            health, and boost your body's natural defenses.</em>
+                    </div>
+                </div>
+                <div class="second-container">
+                    <div class="first-cont">
+                        <strong style="font-size:33px;padding-left:20px;padding-right:
+                        20px;padding-top:20px;margin-top:100px;">Feel Full, Feel Fantastic</strong>
+                        <em style="font-size: 21px;padding:20px;">Nuts are a smart snack that curbs
+                            cravings and supports weight management. Their rich fiber and good fats
+                            help you stay full without feeling heavy.</em>
+                    </div>
+                    <img src="../assets/img/akahrot.jpg" style="width:96%;">
+                </div>
+                <div class="third-container">
+                    <img src="../assets/img/badam.jpg" style="width:93%;">
+                    <div class="first-cont">
+                        <strong style="font-size:33px;padding-left:20px;padding-right:
+                        20px;padding-top:20px;margin-top:100px;">Wholesome Crunch for a Healthy Life</strong>
+                        <em style="font-size: 21px;padding:20px;">From improving cholesterol to supporting bone
+                            strength, nuts are nature's multitaskers. Add them to your diet for a simple step
+                            toward long-term wellness.</em>
+                    </div>
+                </div>
+                <div class="press-rivw">
+                    <h1>Press reviews</h1>
+                </div>
+            </div>
         </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      {# <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-muted">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      #}
-
-
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">Your Cart Is Empty</strong>
-          <small class="text-muted">Shop now</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-    </div>
-  </div>
-
-  {% if product is not empty %}
-  <div class="big-container">
-    <div class="img-container">
-
-      <img src="../assets/img/{{product.image}}" style="width:500px;padding-right: 100px;height: 550px;">
-      <div class="small-box">
-        <div class="cont1">
-          <img src="image/WhatsApp Image 2025-07-29 at 22.43.02_9a275e8f.jpg"
-            style="width: 70%; height: 100%;border-radius: 19px;margin-left:20px">
-        </div>
-        <div class="cont2">
-          <img src="image/WhatsApp Image 2025-07-30 at 09.01.11_ea4b1a73.jpg"
-            style="width: 70%; height: 100%;border-radius: 19px;margin-left:20px">
-        </div>
-        <div class="cont3">
-          <img src="image/PK_Collagen-Peptides_20serv-Vanilla-SFP_2024-07-08_30777c53-35bb-4478-812f-c9195f374b5e.webp"
-            style="width: 100%; height: 100%;border-radius: 19px;">
-        </div>
-      </div>
-    </div>
-    <div class="text-container">
-
-      <div class="heading1">
-        <h1>{{product.name}}</h1>
-      </div>
-
-      <div class="para1">
-        <p>{{product.description|nl2br}}</p>
-      </div>
-      <div class="clinicians-choice">
-        <p>⭐⭐⭐⭐⭐ 5467 Reviews</p>
-      </div>
-      <p style="font-size: 15px;">Quantity</p>
-      <div class="quantity-box">
-        <div class="box1">
-          <h4>One time</h4>
-          <h5>$44.55</h5>
-        </div>
-        <div class="add-to-cart-box">
-          <div class="adding-box">
-            <span class="sub">-</span>
-            <span class="num">01</span>
-            <span class="add">+</span>
-          </div>
-          <div class="add-to-cart">
-            <button>
-              <h2>Add to cart</h2>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="text-list">
-        <ul>
-          <li>
-            <i class="fa-regular fa-circle-check"></i><strong>Made to:</strong>
-            <em>Support brain health, improve memory, enhance focus,
-              promote heart wellness, and reduce inflammation.</em>
-          </li>
-          <br>
-          <li>
-            <i class="fa-regular fa-circle-check"></i><em>Naturally rich in Omega-3 fatty acids and
-              antioxidants</em>
-          </li>
-          <br>
-          <li>
-            <i class="fa-regular fa-circle-check"></i><em>High in plant-based protein and fiber</em>
-          </li>
-          <br>
-          <li>
-            <i class="fa-regular fa-circle-check"></i><em>Gluten-free and vegan-friendly</em>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="big-container2">
-    <div class="first-container">
-      <img src="../assets/img/jenn-kosar-FhXZSP-4ARg-unsplash.jpg" style="width:90%;">
-      <div class="first-cont">
-        <strong style="font-size:33px;padding-left:20px;padding-right:
-      20px;padding-top:20px;margin-top:100px;">Nourish Naturally</strong>
-        <em style="font-size: 21px;padding:20px;">Every handful of nuts delivers
-          vitamins and antioxidants that help reduce inflammation, support heart
-          health, and boost your body's natural defenses.</em>
-      </div>
-    </div>
-    <div class="second-container">
-      <div class="first-cont">
-        <strong style="font-size:33px;padding-left:20px;padding-right:
-      20px;padding-top:20px;margin-top:100px;">Feel Full, Feel Fantastic</strong>
-        <em style="font-size: 21px;padding:20px;">Nuts are a smart snack that curbs
-          cravings and supports weight management. Their rich fiber and good fats
-          help you stay full without feeling heavy.</em>
-      </div>
-      <img src="../assets/img/akahrot.jpg" style="width:96%;">
-    </div>
-    <div class="third-container">
-      <img src="../assets/img/badam.jpg" style="width:93%;">
-      <div class="first-cont">
-        <strong style="font-size:33px;padding-left:20px;padding-right:
-      20px;padding-top:20px;margin-top:100px;">Wholesome Crunch for a Healthy Life</strong>
-        <em style="font-size: 21px;padding:20px;">From improving cholesterol to supporting bone
-          strength, nuts are nature's multitaskers. Add them to your diet for a simple step
-          toward long-term wellness.</em>
-      </div>
-    </div>
-    <div class="press-rivw">
-      <h1>Press reviews</h1>
-    </div>
-  </div>
-  </div>
-  </div>
-  {% else %}
-  <p>No products found.</p>
-
-
-  {% endif %}
-
-
-
-
-
-  <!-- Footer -->
-  <footer class="text-center text-lg-start text-white" style="background-color: #1c2331">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-between p-4 bg-warning bg-opacity-25">
-      <!-- Left -->
-      <div class="me-5">
-        <span>Get connected with us on social networks:</span>
-      </div>
-      <!-- Left -->
-
-      <!-- Right -->
-      <div>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold">Company name</h6>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-            <p>
-              Here you can use rows and columns to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit.
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Products</h6>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-            <p>
-              <a href="#!" class="text-white">MDBootstrap</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">MDWordPress</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">BrandFlow</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Bootstrap Angular</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Useful links</h6>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-            <p>
-              <a href="#!" class="text-white">Your Account</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Become an Affiliate</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Shipping Rates</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Help</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Contact</h6>
-            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-
-
-  <!-- End of .container -->
-
-
-
-
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/dynamic.js"></script>
-</body>
-
-</html>
+    {% else %}
+        <p>No products found.</p>
+    {% endif %}
+{% endblock %}
